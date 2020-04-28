@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-input_file = "fingerprint_1"
+input_file = input("Type the name of the .png file to crop: ")
 output_file = input_file + "_cropped"
 
 
