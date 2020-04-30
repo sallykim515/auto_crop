@@ -1,2 +1,5 @@
-fingerprint_1.png
-fingerprint_1_cropped.png
+.idea/
+fingerprint_cropped.png
+auto_crop_screenshot.png
+example_bordered.png
+example_cropped_bordered.png
