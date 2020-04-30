@@ -1,8 +1,14 @@
 import cv2
+import sys
 import numpy as np
 
-input_file = input("Type the name of the .png file to crop: ")
-output_file = input_file + "_cropped"
+input_file = input("Enter input filename with its extension: ")
+try:
+    name, ext = input_file.split('.')
+except ValueError:
+    print("Please try again with the correct file name including its extension.")
+    sys.exit(1)
+output_file = name + "_cropped." + ext
 
 
 def find_keeps(non_empty):
@@ -56,13 +62,13 @@ def crop_im(im, padding=0.012):
     mt, mb = find_keeps(non_empty_rows)
 
     # crop the original image, applying appropriate paddings
-    cropped = im[max(mt-row_padding, 0):min(mb+row_padding, rows),
-              max(ml-col_padding, 0):min(mr+col_padding, cols),:]
+    cropped = im[max(mt - row_padding, 0):min(mb + row_padding, rows),
+              max(ml - col_padding, 0):min(mr + col_padding, cols), :]
 
     return cropped
 
 
-im = cv2.imread(input_file+'.png')
+im = cv2.imread(input_file)
 cropped = crop_im(im)
-cv2.imwrite(output_file+'.png', cropped)
+cv2.imwrite(output_file, cropped)
 print(f"Successfully created {output_file}")
