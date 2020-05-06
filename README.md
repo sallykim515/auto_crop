@@ -30,5 +30,22 @@ Output file:
 
 (*Note, the borders were added for illustration purpose*)
 
+# Behind the Scene
+Libraries used: `numpy`, `cv2`, `sys`
+
+## Algorithm
+1. Compute averages of intensity values across rows and columns of an input image.
+2. Only keep rows and columns with averages less than 253. This crops the white backgrounds around the main image and the smudge.
+3. Identify "jumps" in the image from step 2, defined by a change in intensity value being greater than 10 in consecutive pixels.
+4. Remove the jumps and onward, away from the main image - e.g. if the jumps are on the right half of the image, take the minimum column index of the strips and remove everything right of that idex.
+5. Add a small padding (`default_padding=0.012`) all around to the image from step 4 before saving the image.
+
+Note, an average approach is used since fingerprint itself contains white spaces and the program cannot distinguish a smudge from a main image in the beginning. Further what appears to be white background to naked eyes may not have the perfect 255 intensity value. Hence the program uses average values and treats 253+ as white background to be cropped.
+
+
+## Potential Enhancements
+* handling of multiple smudges
+* ability to crop an image with non-white background
+
 # Credits
 The input `fingerprint.png` file was created using a clipart fingerprint from [Clipart Library](http://clipart-library.com/clipart/8i65bnx5T.htm) by Phillip Martin.
