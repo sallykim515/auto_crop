@@ -8,7 +8,7 @@ Created initially to remove white background margin around a fingerprint and pot
 First, open the terminal and `cd` into the directory where you would like to download this program.
 Then, clone the auto-crop repository
 ```
-git clone https://github.com/sallykim515/auto-crop.git
+git clone https://github.com/sallyhk/auto-crop.git
 ```
 Put .png file to crop inside the auto-crop folder. Note the filename.
 Use the following command to run the program:
